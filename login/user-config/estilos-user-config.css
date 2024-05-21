@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contenedor-email-pass, .contenedor-nickname-phone-ad {
+    display: flex;
+    flex-direction: column;
+}
+
+i{
+    font-size: 100px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #00ff37;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+h3{
+    margin: 0 auto;
+    margin-left: 90px;
+    width: 50%;
+}
+
+hr{
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid #ccc;
+
+}
