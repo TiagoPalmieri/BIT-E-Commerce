@@ -4,7 +4,7 @@ CREATE DATABASE bit;
 
 USE bit;
 
-CREATE TABLE user (
+CREATE TABLE users (
   id VARCHAR(255) PRIMARY KEY,
   mail VARCHAR(255),
   password VARCHAR(255),
