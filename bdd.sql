@@ -7,8 +7,8 @@ USE bit;
 CREATE TABLE users (
   id VARCHAR(255) PRIMARY KEY,
   mail VARCHAR(255),
-  password VARCHAR(255),
-  name VARCHAR(255),
+  password_ VARCHAR(255),
+  name_ VARCHAR(255),
   lastname VARCHAR(255),
   telephone VARCHAR(255),
   dni VARCHAR(255),
