@@ -23,7 +23,7 @@ CREATE TABLE seller (
   publications INT,
   gains INT,
   userId VARCHAR(255),
-  FOREIGN KEY (userId) REFERENCES user(id)
+  FOREIGN KEY (userId) REFERENCES users(id)
 );
 
 CREATE TABLE product (
@@ -61,7 +61,7 @@ CREATE TABLE transactionHistory (
   buyerId VARCHAR(255),
   sellerId VARCHAR(255),
   productSku VARCHAR(255),
-  FOREIGN KEY (buyerId) REFERENCES user(id),
+  FOREIGN KEY (buyerId) REFERENCES users(id),
   FOREIGN KEY (sellerId) REFERENCES seller(id),
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
@@ -72,7 +72,7 @@ CREATE TABLE billing (
   sellerId VARCHAR(255),
   buyerId VARCHAR(255),
   FOREIGN KEY (sellerId) REFERENCES seller(id),
-  FOREIGN KEY (buyerId) REFERENCES user(id)
+  FOREIGN KEY (buyerId) REFERENCES users(id)
 );
 
 CREATE TABLE sell (
@@ -80,6 +80,6 @@ CREATE TABLE sell (
   sellDate DATE,
   buyerId VARCHAR(255),
   sellerId VARCHAR(255),
-  FOREIGN KEY (buyerId) REFERENCES user(id),
+  FOREIGN KEY (buyerId) REFERENCES users(id),
   FOREIGN KEY (sellerId) REFERENCES seller(id)
 );
