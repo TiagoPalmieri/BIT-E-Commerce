@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-config</title>
+    <link rel="stylesheet" href="estilos-user-config.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="form-container">
+        <i class='bx bx-user-circle'></i>
+        <div class="grid">
+            <div class="contenedor-email-pass">
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="username@gmail.com">
+                <label for="password">Contraseña actual: </label>
+                <div class="new-pass">
+                    <input type="password" id="password" name="password" placeholder="************">
+                    <label for="password">Contraseña nueva: </label>
+                    <input type="password" id="password" name="password" placeholder="************">
+                    <label for="new-password">Confirmar contraseña nueva: </label>
+                    <input type="password" id="password" name="password" placeholder="************">
+                </div>
+            </div>
+            <div class="contenedor-nickname-phone-ad">
+                <label for="nickname">Nickname: </label>
+                <input type="text" id="nickname" name="nickname" placeholder="Nickname">
+                <label for="phone-number">Phone number: </label>
+                <input type="tel" id="phone-number" name="phone-number" placeholder="+54 ****-8749">
+                <label for="address">Address: </label>
+                <input type="text" id="address" name="address" placeholder="Teodoro Garcia 3899">
+            </div>
+            <div class="contenedor-botones">
+                <button class="cancelar">Cancelar</button>
+                <button class="save-changes">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="contenedor-manage">
+            <h3>Manage</h3>
+            <hr>
+            <a href="#My-account">My Account</a>
+            <hr class="items-sidebar">
+            <a href="#My-profile">My profile</a>
+            <hr class="items-sidebar">
+            <a href="#Payment-options">My Payments Options</a>
+            <hr class="items-sidebar">
+        </div>
+        <div class="contenedor-orders">
+            <h3>Orders</h3>
+            <hr>
+            <a href="#My-returns">My returns</a>
+            <hr class="items-sidebar">
+            <a href="#My-Cancelations">My Cancelations</a>
+            <hr class="items-sidebar">
+        </div>
+    </div>
+</body>
+
+</html>
