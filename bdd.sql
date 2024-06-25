@@ -1,9 +1,12 @@
 DROP DATABASE IF EXISTS bit;
 
+-- Create the database
 CREATE DATABASE bit;
 
+-- Switch to the newly created database
 USE bit;
 
+-- Table: users
 CREATE TABLE users (
   id VARCHAR(255) PRIMARY KEY,
   mail VARCHAR(255),
@@ -16,27 +19,29 @@ CREATE TABLE users (
   calification INT
 );
 
+-- Table: seller
 CREATE TABLE seller (
-  id VARCHAR(255),
+  id VARCHAR(255) PRIMARY KEY,
+  userId VARCHAR(255),
   sells INT,
-  dni VARCHAR(255),
   publications INT,
   gains INT,
-  userId VARCHAR(255),
+  dni VARCHAR(255),
   FOREIGN KEY (userId) REFERENCES users(id)
 );
 
+-- Table: product
 CREATE TABLE product (
-  sku VARCHAR(255),
+  sku VARCHAR(255) PRIMARY KEY,
   description TEXT,
   type ENUM('type1', 'type2', 'type3'), 
   price FLOAT,
-  stock INT,
-  PRIMARY KEY (sku)
+  stock INT
 );
 
+-- Table: publication
 CREATE TABLE publication (
-  id VARCHAR(255),
+  id VARCHAR(255) PRIMARY KEY,
   date DATE,
   description TEXT,
   title VARCHAR(255),
@@ -46,8 +51,9 @@ CREATE TABLE publication (
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
+-- Table: image
 CREATE TABLE image (
-  id VARCHAR(255),
+  id VARCHAR(255) PRIMARY KEY,
   format ENUM('jpeg', 'png', 'gif'), 
   weight FLOAT,
   resolution VARCHAR(255),
@@ -56,8 +62,9 @@ CREATE TABLE image (
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
+-- Table: transactionHistory
 CREATE TABLE transactionHistory (
-  idTransaction VARCHAR(255),
+  idTransaction VARCHAR(255) PRIMARY KEY,
   buyerId VARCHAR(255),
   sellerId VARCHAR(255),
   productSku VARCHAR(255),
@@ -66,8 +73,9 @@ CREATE TABLE transactionHistory (
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
+-- Table: billing
 CREATE TABLE billing (
-  invoiceId VARCHAR(255),
+  invoiceId VARCHAR(255) PRIMARY KEY,
   buyDate DATE,
   sellerId VARCHAR(255),
   buyerId VARCHAR(255),
@@ -75,8 +83,9 @@ CREATE TABLE billing (
   FOREIGN KEY (buyerId) REFERENCES users(id)
 );
 
+-- Table: sell
 CREATE TABLE sell (
-  id VARCHAR(255),
+  id VARCHAR(255) PRIMARY KEY,
   sellDate DATE,
   buyerId VARCHAR(255),
   sellerId VARCHAR(255),
