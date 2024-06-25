@@ -1,0 +1,112 @@
+:root {
+    --primario: #D9D9D9;
+    --primarioSecundario: #ECF0F1;
+    --primarioOscuro: #282826;
+    --secundario: #EA5656;
+    --terciario: #110F36;
+    --approved: green;
+    --denied: red;
+    --blanco: #FAFAFA;
+    --negro: #000;
+    --shadow: rgba(0, 0, 0, 0.500);
+    --grey: #909497;
+    --fuentePrincipal: "Ubuntu", sans-serif;
+}
+
+.contenedor-header{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-header a{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--primarioOscuro);
+    font-size: 20px;
+    padding: 15px 25px;
+}
+
+hr {
+    margin: 0 auto;
+    width: 50%;
+    border: 0.5px solid #ccc;
+}
+
+body {
+    font-family: var(--fuentePrincipal);
+    /* Utilizar la variable de fuente definida */
+    background-color: var(--blanco);
+    /* Fondo blanco para mayor legibilidad */
+    margin: 0;
+    /* Eliminar el margen predeterminado del cuerpo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centrar verticalmente todo el contenido */
+}
+
+.contenedor-general {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    height: 300px;
+    margin-top: 20px;
+    position: relative;
+    /* Para que los elementos internos respeten este contenedor */
+}
+
+.contenedor-presentacion {
+    background-color: var(--negro);
+    width: 50%;
+    border-radius: 15px;
+    position: relative;
+    padding: 20px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    background: #C2F84E;
+    border-radius: 40% 300px 300px 35% / 40% 200px 200px 40%;
+    height: 200px;
+    width: 200px;
+    animation: shaping 5s infinite; 
+    right: 50%; 
+    top: 90px; 
+    z-index: 3; 
+}
+
+@keyframes shaping {
+    0% {
+        border-radius: 40% 60% 65% 35% / 40% 35% 65% 60%;
+    }
+
+    50% {
+        border-radius: 70% 30% 50% 50% / 65% 35% 65% 35%;
+    }
+
+    100% {
+        border-radius: 40% 60% 65% 35% / 40% 35% 65% 60%;
+    }
+}
+
+img{
+    width: 20%;
+    z-index: 3;
+    position: relative;
+    /* Asegura que la imagen esté sobre el blob */
+}
+
+p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 10px;
+    position: relative;
+    /* Asegura que el texto esté en la capa superior */
+    z-index: 3;
+    /* Coloca el texto por encima de contenedor-presentacion y blob */
+}
