@@ -1,3 +1,4 @@
+
 app.get('/transactionHistory', getAllTransactions);
 
 //Obtener una transacción por su ID

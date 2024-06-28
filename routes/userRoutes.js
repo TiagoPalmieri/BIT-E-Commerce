@@ -1,3 +1,4 @@
+
 app.get('/users', getAllUsers);
 
 // Mostrar un usuario por su ID

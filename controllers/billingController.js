@@ -1,5 +1,5 @@
-const db = require('../dbConfig');
-const { v4: uuidv4 } = require('uuid');
+import db from '../config'
+import uuidv4 from 'uuid'
 
 exports.getAllBillings = (req, res) => {
     const query = 'SELECT * FROM billing';
