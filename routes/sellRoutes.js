@@ -1,18 +1,22 @@
-
+const express = require('express');
+router = express.Router();
+const {getAllSells, getSellById, setNewSell, updateSell, deleteSell} = require('../controllers/sellController')
 
 //sell
 
 //Obtener todas las ventas
-app.get('/sell', getAllSells);
+router.get('/sell', getAllSells);
 
 //obtener una venta por su ID:
-app.get('/sell/:id', getSellById);
+router.get('/sell/:id', getSellById);
 
 //crear una nueva venta:
-app.post('/sell', setNewSell);
+router.post('/sell', setNewSell);
 
 //Actualizar una venta
-app.put('/sell/:id', updateSell);
+router.put('/sell/:id', updateSell);
 
 //eliminar una venta
-app.delete('/sell/:id', deleteSell);
+router.delete('/sell/:id', deleteSell);
+
+module.exports = router

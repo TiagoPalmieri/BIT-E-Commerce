@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
-import mysql from 'mysql2';
-import app from './app';
-
-const PORT = process.env.PORT || 3000;
+const dotenv = require('dotenv');
+const mysql = require('mysql2');
 
 dotenv.config();
 
@@ -21,10 +18,6 @@ db.connect((err) => {
         return;
     }
     console.log('Conexión a la base de datos exitosa');
-});
-
-app.listen(PORT, ()=>{
-    console.log(`Serbidor corriendo en http://localhost:${PORT}`);
 });
 
 module.exports = db;

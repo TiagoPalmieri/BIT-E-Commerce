@@ -1,13 +1,19 @@
+const express = require('express');
+router = express.Router();
+const {getAllPublications, getPublicationById, setNewPublication, updatePublication, deletePublication} = require('../controllers/publicationController')
 
 
 //publication
 
-app.get('/publications', getAllPublications);
+router.get('/publications', getAllPublications);
 
-app.get('/publication/:id', getPublicationById);
+router.get('/publication/:id', getPublicationById);
 
-app.post('/publications', setNewPublication);
+router.post('/publications', setNewPublication);
 
-app.put('/publications/:id', updatePublication);
+router.put('/publications/:id', updatePublication);
 
-app.delete('/publications/:id', deletePublication);
+router.delete('/publications/:id', deletePublication);
+
+module.exports = router
+

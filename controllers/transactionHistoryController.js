@@ -1,4 +1,4 @@
-const db = require('../dbConfig');
+const db = require('../config');
 const { v4: uuidv4 } = require('uuid');
 
 exports.getAllTransactions = (req, res) => {
@@ -30,7 +30,7 @@ exports.getTransactionsById = (req, res) => {
     });
 }
 
-exports.setNewTransactions = (req, res) => {
+exports.setNewTransaction = (req, res) => {
     const { idTransaction, buyerId, sellerId, productSku } = req.body;
     const query = 'INSERT INTO transactionHistory (idTransaction, buyerId, sellerId, productSku) VALUES (?, ?, ?, ?)';
     db.query(query, [idTransaction, buyerId, sellerId, productSku], (err, results) => {

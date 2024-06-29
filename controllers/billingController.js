@@ -1,5 +1,5 @@
-import db from '../config'
-import uuidv4 from 'uuid'
+const db = require('../config')
+const {v4: uuidv4} = require('uuid')
 
 exports.getAllBillings = (req, res) => {
     const query = 'SELECT * FROM billing';
@@ -33,7 +33,7 @@ exports.getBillingById = (req, res) => {
 exports.setNewBilling = (req, res) => {
     const { invoiceId, buyDate, sellerId, buyerId } = req.body;
     const query = 'INSERT INTO billing (invoiceId, buyDate, sellerId, buyerId) VALUES (?, ?, ?, ?)';
-    db.query(qquery, [invoiceId, buyDate, sellerId, buyerId], (err, results) => {
+    db.query(query, [invoiceId, buyDate, sellerId, buyerId], (err, results) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error creando la factura');

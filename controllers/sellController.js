@@ -1,5 +1,5 @@
-const db = require('../dbConfig');
 const { v4: uuidv4 } = require('uuid');
+const db = require('../config');
 
 exports.getAllSells = (req, res) => {
     const query = 'SELECT * FROM sell';

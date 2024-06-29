@@ -1,5 +1,5 @@
-import db from './config'
-class UserRepository {
+import db from './config.js'
+class User {
 
     static async findByEmail(email) {
         const [rows] = await db.execute('SELECT * FROM users WHERE email = ?')

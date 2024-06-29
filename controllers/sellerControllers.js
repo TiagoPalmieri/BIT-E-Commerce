@@ -1,4 +1,4 @@
-const db = require('../dbConfig');
+const db = require('../config');
 const { v4: uuidv4 } = require('uuid');
 
 exports.getAllSellers = (req, res) => {

@@ -1,12 +1,22 @@
+const express = require('express');
+router = express.Router();
+const {getAllSellers, getSellerById, setNewSeller, updateSeller, deleteSeller} = require('../controllers/sellerControllers')
 
 
 // Tabla seller
 
 //Mostrar todo
-app.get('/seller', getAllSellers);
+router.get('/seller', getAllSellers);
+
+router.post('/seller', setNewSeller);
 
 //Mostrar por ID
-app.get('/seller/:id', getSellerById);
+router.get('/seller/:id', getSellerById);
 
 // Actualizar un vendedor.
-app.put('/seller/:id', updateSeller);
+router.put('/seller/:id', updateSeller);
+
+// Eliminar un vendedor
+router.delete('/seller/:id', deleteSeller);
+
+module.exports = router
