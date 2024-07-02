@@ -11,7 +11,7 @@ const sellRoutes = require('./routes/sellRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cors = require('cors')
-
+const helmet = require('helmet')
 
 /*const authToken = (req, res, next) => {
     const token = req.cookies['jwt']; // Nombre de la cookie que contiene el JWT
@@ -40,6 +40,7 @@ const corsOptions = {
     credentials: true
 }
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
