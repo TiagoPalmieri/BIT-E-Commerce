@@ -1,5 +1,7 @@
 const db = require('../config');
 const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
 exports.getAllUsers = (req, res) => {
     const query = 'SELECT * FROM users'
@@ -68,4 +70,46 @@ exports.deleteUser = (req, res) => {
         res.send('Usuario eliminado')
     });
 }
+
+exports.register = (req, res) => {
+    const { mail, password } = req.body;
+    const hashedPassword = bcrypt.hashSync(password, 8);
+
+    const query = 'INSERT INTO USERS (mail, password_) VALUES(?,?)';
+
+    db.query(query, [mail, hashedPassword], (err, results) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Database error')
+            return;
+        }
+        res.status(201).send('User registered successfully');
+    });
+};
+
+exports.login = (req, res) => {
+    const { email, password } = req.body
+
+    const query = 'SELECT * FROM users WHERE mail = ?';
+
+    db.query(query, [email], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database error');
+        }
+
+        if (results.length === 0) return res.status(404).send('User not found')
+
+
+        const user = results[0];
+        const isValidPassword = bcrypt.compareSync(password_, user.password_);
+
+        if (!isValidPassword) return res.status(401).send('Invalid password');
+
+        const token = jwt.sign({ name_: user.name_}, process.env.SECRET_KEY, {expiresIn: 86400});
+
+        res.cookie('token', token, {httpOnly: true});
+        res.status(200).send('Logged in successfully');
+    });
+};
 

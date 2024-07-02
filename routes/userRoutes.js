@@ -1,6 +1,10 @@
-const { getAllUsers, getUserById, setNewUser, updateUser, deleteUser } = require('../controllers/userControllers');
+
+const { getAllUsers, getUserById, setNewUser, updateUser, deleteUser, login, register } = require('../controllers/userControllers');
 const express = require('express');
-router = express.Router();
+const router = express.Router();
+const {verifyToken} = require('../controllers/auth');
+
+const app = express()
 
 router.get('/users', getAllUsers);
 
@@ -9,6 +13,11 @@ router.get('/users:userId', getUserById);
 
 // Crear un nuevo usuario
 router.post('/users', setNewUser);
+
+router.post('/auth/register', register)
+
+
+router.post('/auth/login', login);
 
 //Actualizar un usuario.
 

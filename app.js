@@ -13,7 +13,7 @@ const userRoutes = require('./routes/userRoutes');
 const cors = require('cors')
 
 
-const authToken = (req, res, next) => {
+/*const authToken = (req, res, next) => {
     const token = req.cookies['jwt']; // Nombre de la cookie que contiene el JWT
 
     if (token) {
@@ -28,7 +28,7 @@ const authToken = (req, res, next) => {
     } else {
         res.status(401).send('Token no proporcionado');
     }
-};
+};*/
 
 
 const app = express();
@@ -54,5 +54,6 @@ app.use('/api/v1', sellerRoutes);
 app.use('/api/v1', sellRoutes);
 app.use('/api/v1', transactionRoutes);
 app.use('/api/v1', userRoutes);
+
 
 module.exports = app;
