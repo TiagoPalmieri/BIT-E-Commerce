@@ -1,5 +1,5 @@
-const db = require('../config')
-const {v4: uuidv4} = require('uuid')
+const db = require('../config');
+const {v4: uuidv4} = require('uuid');
 
 exports.getAllImages = (req, res) => {
     const query = 'SELECT * FROM image where productSku = ?';
@@ -12,7 +12,7 @@ exports.getAllImages = (req, res) => {
         }
         res.json(results);
     });
-}
+};
 
 exports.getImageById = (req, res) => {
     const { sku, id } = req.params;

@@ -70,4 +70,5 @@ exports.updateSeller = (req, res) => {
             }
             res.send('Usuario actualizado');
         });
-}
+};
+

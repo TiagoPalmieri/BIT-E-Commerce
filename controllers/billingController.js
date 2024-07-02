@@ -1,5 +1,5 @@
-const db = require('../config')
-const {v4: uuidv4} = require('uuid')
+const db = require('../config');
+const {v4: uuidv4} = require('uuid');
 
 exports.getAllBillings = (req, res) => {
     const query = 'SELECT * FROM billing';
@@ -11,7 +11,7 @@ exports.getAllBillings = (req, res) => {
         }
         res.json(results);
     });
-}
+};
 
 exports.getBillingById = (req, res) => {
     const { id } = req.params;
@@ -28,7 +28,7 @@ exports.getBillingById = (req, res) => {
         }
         res.json(results[0]);
     });
-}
+};
 
 exports.setNewBilling = (req, res) => {
     const { invoiceId, buyDate, sellerId, buyerId } = req.body;
@@ -41,7 +41,7 @@ exports.setNewBilling = (req, res) => {
         }
         res.status(201).send('Factura creada');
     });
-}
+};
 
 exports.updateBilling = (req, res) => {
     const { id } = req.params;
@@ -55,7 +55,7 @@ exports.updateBilling = (req, res) => {
         }
         res.status(200).send('Factura actualizada');
     });
-}
+};
 
 exports.deleteBilling = (req, res) => {
     const { id } = req.params;
@@ -68,5 +68,4 @@ exports.deleteBilling = (req, res) => {
         }
         res.status(200).send('Factura eliminada');
     });
-}
-
+};

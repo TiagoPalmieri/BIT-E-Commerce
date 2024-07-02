@@ -1,5 +1,5 @@
-const db = require('../config')
-const {v4: uuidv4} = require('uuid')
+const db = require('../config');
+const {v4: uuidv4} = require('uuid');
 
 exports.getAllPublications = (req, res) => {
     const query = 'SELECT * FROM publication';
@@ -11,7 +11,7 @@ exports.getAllPublications = (req, res) => {
         }
         res.json(results);
     });
-}
+};
 
 exports.getPublicationById = (req, res) => {
     const id = req.params.id;
@@ -28,7 +28,7 @@ exports.getPublicationById = (req, res) => {
         }
         res.json(result[0]);
     });
-}
+};
 
 exports.setNewPublication = (req, res) => {
     const { date, description, title, sellerId, productSku } = req.body;
@@ -42,7 +42,7 @@ exports.setNewPublication = (req, res) => {
         }
         res.status(201).send('publicacion creada');
     });
-}
+};
 
 exports.updatePublication = (req, res) => {
     const id = req.params.id;
@@ -60,7 +60,7 @@ exports.updatePublication = (req, res) => {
         }
         res.status(200).send('publicacion actualizada');
     });
-}
+};
 
 exports.deletePublication = (req, res) => {
     const id = req.params.id;
@@ -77,5 +77,4 @@ exports.deletePublication = (req, res) => {
         }
         res.status(200).send('publicacion eliminada');
     });
-}
-
+};

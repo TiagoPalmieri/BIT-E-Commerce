@@ -68,5 +68,4 @@ exports.deleteTransaction = (req, res) => {
         }
         res.status(200).send('Transacción eliminada');
     });
-}
-
+};
