@@ -1,60 +1,77 @@
 DROP DATABASE IF EXISTS bit;
 
--- Create the database
+-- Crear la base de datos
 CREATE DATABASE bit;
 
--- Switch to the newly created database
+-- Cambiar a la base de datos recién creada
 USE bit;
 
--- Table: users
+-- Tabla: users
 CREATE TABLE users (
-  id VARCHAR(255) PRIMARY KEY,
-  mail VARCHAR(255),
-  password_ VARCHAR(255),
-  name_ VARCHAR(255),
-  lastname VARCHAR(255),
-  telephone VARCHAR(255),
-  dni VARCHAR(255),
-  roles ENUM('admin', 'user', 'seller', 'staff'), 
-  calification INT
+  id INT PRIMARY KEY,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  userPassword VARCHAR(100) NOT NULL,
+  fullName VARCHAR(255) NOT NULL,
+  telephone VARCHAR(20),
+  dni VARCHAR(10) UNIQUE,
+  address TEXT
 );
 
--- Table: seller
-CREATE TABLE seller (
-  id VARCHAR(255) PRIMARY KEY,
-  userId VARCHAR(255),
-  sells INT,
-  publications INT,
-  gains INT,
-  dni VARCHAR(255),
+-- Tabla: buyer
+CREATE TABLE buyer (
+  id INT PRIMARY KEY,
+  userId INT NOT NULL,
+  buys INT DEFAULT 0,
+  calification INT DEFAULT 0,
   FOREIGN KEY (userId) REFERENCES users(id)
 );
 
--- Table: product
+-- Tabla: seller
+CREATE TABLE seller (
+  id INT PRIMARY KEY,
+  userId INT NOT NULL,
+  sells INT DEFAULT 0,
+  publications INT DEFAULT 0,
+  gains DECIMAL(10, 2) DEFAULT 0.00,
+  calification INT DEFAULT 0,
+  FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+-- Tabla: product
 CREATE TABLE product (
   sku VARCHAR(255) PRIMARY KEY,
   description TEXT,
-  type ENUM('type1', 'type2', 'type3'), 
-  price FLOAT,
-  stock INT
+  type ENUM('type1', 'type2', 'type3'),
+  price DECIMAL(10, 2) NOT NULL,
+  stock INT DEFAULT 0,
+  favorites BOOLEAN DEFAULT false
 );
 
--- Table: publication
+-- Tabla: publication
 CREATE TABLE publication (
-  id VARCHAR(255) PRIMARY KEY,
-  date DATE,
+  id INT PRIMARY KEY,
+  date DATE NOT NULL,
   description TEXT,
   title VARCHAR(255),
-  sellerId VARCHAR(255),
+  sellerId INT,
   productSku VARCHAR(255),
   FOREIGN KEY (sellerId) REFERENCES seller(id),
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
--- Table: image
+-- Tabla: reviews
+CREATE TABLE reviews (
+  id INT PRIMARY KEY,
+  content TEXT,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  userId INT,
+  FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+-- Tabla: image
 CREATE TABLE image (
-  id VARCHAR(255) PRIMARY KEY,
-  format ENUM('jpeg', 'png', 'gif'), 
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  format ENUM('jpeg', 'png', 'gif'),
   weight FLOAT,
   resolution VARCHAR(255),
   directory VARCHAR(255),
@@ -62,33 +79,33 @@ CREATE TABLE image (
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
--- Table: transactionHistory
+-- Tabla: transactionHistory
 CREATE TABLE transactionHistory (
-  idTransaction VARCHAR(255) PRIMARY KEY,
-  buyerId VARCHAR(255),
-  sellerId VARCHAR(255),
+  id INT PRIMARY KEY,
+  buyerId INT,
+  sellerId INT,
   productSku VARCHAR(255),
   FOREIGN KEY (buyerId) REFERENCES users(id),
   FOREIGN KEY (sellerId) REFERENCES seller(id),
   FOREIGN KEY (productSku) REFERENCES product(sku)
 );
 
--- Table: billing
+-- Tabla: billing
 CREATE TABLE billing (
-  invoiceId VARCHAR(255) PRIMARY KEY,
+  invoiceId INT PRIMARY KEY,
   buyDate DATE,
-  sellerId VARCHAR(255),
-  buyerId VARCHAR(255),
+  sellerId INT,
+  buyerId INT,
   FOREIGN KEY (sellerId) REFERENCES seller(id),
   FOREIGN KEY (buyerId) REFERENCES users(id)
 );
 
--- Table: sell
+-- Tabla: sell
 CREATE TABLE sell (
-  id VARCHAR(255) PRIMARY KEY,
+  id INT PRIMARY KEY,
   sellDate DATE,
-  buyerId VARCHAR(255),
-  sellerId VARCHAR(255),
+  buyerId INT,
+  sellerId INT,
   FOREIGN KEY (buyerId) REFERENCES users(id),
   FOREIGN KEY (sellerId) REFERENCES seller(id)
 );
