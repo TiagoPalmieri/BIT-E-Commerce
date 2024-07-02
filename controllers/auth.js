@@ -6,9 +6,9 @@ exports.verifyToken = (req, res, next)=>{
     if (!token) return res.status(403).send('No token provided');
 
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-        if (err) return res.status(500).send('Failed to authenticate token');
+        if (err) return res.redirect('/login');
 
-        req.user.name = decoded.name
+        req.user.name = decoded.name;
         next();
     });
 };
