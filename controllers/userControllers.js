@@ -101,7 +101,7 @@ exports.login = (req, res) => {
 
         if (!isValidPassword) return res.status(401).send('Invalid password');
 
-        const token = jwt.sign({ id: user.id, name_: user.name_ }, process.env.SECRET_KEY, { expiresIn: 86400 });
+        const token = jwt.sign({ name_: user.name_ }, process.env.SECRET_KEY, { expiresIn: 86400 });
 
         res.cookie('token', token, { httpOnly: true });
         res.status(200).send('Logged in successfully');
