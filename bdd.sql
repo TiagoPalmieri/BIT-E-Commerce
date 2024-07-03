@@ -14,16 +14,8 @@ CREATE TABLE users (
   fullName VARCHAR(255) NOT NULL,
   telephone VARCHAR(20),
   dni VARCHAR(10) UNIQUE,
-  address TEXT
-);
-
--- Tabla: buyer
-CREATE TABLE buyer (
-  id INT PRIMARY KEY,
-  userId INT NOT NULL,
-  buys INT DEFAULT 0,
-  calification INT DEFAULT 0,
-  FOREIGN KEY (userId) REFERENCES users(id)
+  address TEXT,
+  rol ENUM('admin', 'user', 'staff')
 );
 
 -- Tabla: seller
