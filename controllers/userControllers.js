@@ -29,11 +29,11 @@ exports.getUserById = (req, res) => {
 };
 
 exports.setNewUser = (req, res) => {
-    const { mail, password_, name_, lastname, telephone, dni, roles, calification } = req.body;
+    const { email, userPassword, fullName, telephone, dni, address, rol} = req.body;
     const userId = uuidv4(); //Genera un ID unico
-    const hashedPassword = bcrypt.hashSync(password_, 8);
-    const query = 'INSERT INTO users (id, mail, password_, name_, lastname, telephone, dni, roles, calification) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    db.query(query, [userId, mail, hashedPassword, name_, lastname, telephone, dni, roles, calification], (err, results) => {
+    const hashedPassword = bcrypt.hashSync(userPassword, 8);
+    const query = 'INSERT INTO users (id, email, userPassword, fullName, telephone, dni, address, rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(query, [userId, email, hashedPassword, fullName, telephone, dni, address, rol], (err, results) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error creando el usuario');
@@ -45,9 +45,9 @@ exports.setNewUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
     const { userId } = req.params;
-    const { mail, password_, name_, lastname, telephone, dni, roles, calification } = req.body;
-    const hashedPassword = bcrypt.hashSync(password_, 8);
-    const query = 'UPDATE users SET mail = ?, password_ = ?, name_ = ?, lastname = ?, telephone = ?, dni = ?, roles = ?, calification = ? WHERE id = ?';
+    const { email, userPassword, fullName, telephone, dni, address, rol } = req.body;
+    const hashedPassword = bcrypt.hashSync(userPassword, 8);
+    const query = 'UPDATE users SET email = ?, userPassword = ?, fullName = ?, telephone = ?, dni = ?, address = ?, rol = ? WHERE id = ?';
     db.query(query, [mail, hashedPassword, name_, lastname, telephone, dni, roles, calification, userId], (err, result) => {
         if (err) {
             console.error(err);
@@ -72,10 +72,10 @@ exports.deleteUser = (req, res) => {
 };
 
 exports.register = (req, res) => {
-    const { mail, password } = req.body;
+    const { email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 8);
-    const query = 'INSERT INTO users (mail, password_) VALUES (?, ?)';
-    db.query(query, [mail, hashedPassword], (err, results) => {
+    const query = 'INSERT INTO users (email, userPassword) VALUES (?, ?)';
+    db.query(query, [email, hashedPassword], (err, results) => {
         if (err) {
             console.error(err);
             res.status(500).send('Database error');
@@ -86,9 +86,9 @@ exports.register = (req, res) => {
 };
 
 exports.login = (req, res) => {
-    const { mail, password } = req.body;
+    const { email, userPassword } = req.body;
     const query = 'SELECT * FROM users WHERE mail = ?';
-    db.query(query, [mail], (err, results) => {
+    db.query(query, [email], (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Database error');
@@ -97,11 +97,11 @@ exports.login = (req, res) => {
         if (results.length === 0) return res.status(404).send('User not found');
 
         const user = results[0];
-        const isValidPassword = bcrypt.compareSync(password, user.password_);
+        const isValidPassword = bcrypt.compareSync(password, user.userPassword);
 
         if (!isValidPassword) return res.status(401).send('Invalid password');
 
-        const token = jwt.sign({ name_: user.name_ }, process.env.SECRET_KEY, { expiresIn: 86400 });
+        const token = jwt.sign({ id: user.id, email: user.email, fullName: user.fullName}, process.env.SECRET_KEY, { expiresIn: 86400 });
 
         res.cookie('token', token, { httpOnly: true });
         res.status(200).send('Logged in successfully');
