@@ -2,13 +2,14 @@ const db = require('../config');
 const { v4: uuidv4 } = require('uuid');
 
 exports.getAllSellers = (req, res) => {
-    const query = 'SELECT * FROM seller';
+    const query = 'SELECT * FROM seller s INNER JOIN users u ON s.userId = u.id;';
     db.query(query, (err, results) => {
         if (err) {
             console.error('err');
             res.status(500).send('Error obteniendo contactos');
             return;
         }
+        res.status(200).json(results)
     });
 }
 
