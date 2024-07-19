@@ -86,14 +86,14 @@ exports.register = (req, res) => {
 
         res.status(201).json({
             message: 'User registered successfully',
-            token: token
+            accessToken: token
         });
     });
 };
 
 exports.login = (req, res) => {
     const { email, userPassword } = req.body;
-    const query = 'SELECT * FROM users WHERE mail = ?';
+    const query = 'SELECT * FROM users WHERE email = ?';
     db.query(query, [email], (err, results) => {
         if (err) {
             console.error(err);
@@ -110,6 +110,6 @@ exports.login = (req, res) => {
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.SECRET_KEY, { expiresIn: 86400 });
 
         res.cookie('token', token, { httpOnly: true });
-        res.status(200).json(token);
+        res.status(200).json({accessToken: token});
     });
 };
