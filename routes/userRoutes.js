@@ -1,13 +1,14 @@
 const { getAllUsers, getUserById, setNewUser, updateUser, deleteUser, login, register } = require('../controllers/userControllers');
 const express = require('express');
 const router = express.Router();
-const { verifyToken } = require('../controllers/auth');
+const authHeader = require('../controllers/auth');
 
-router.get('/users', verifyToken, getAllUsers);
-router.get('/users/:userId', verifyToken, getUserById);
-router.post('/users', verifyToken, setNewUser);
-router.put('/users/:userId', verifyToken, updateUser);
-router.delete('/users/:userId', verifyToken, deleteUser);
+
+router.get('/users', getAllUsers);
+router.get('/users/:userId', getUserById);
+router.post('/users', setNewUser);
+router.put('/users/:userId', updateUser);
+router.delete('/users/:userId', deleteUser);
 router.post('/auth/register', register);
 router.post('/auth/login', login);
 
