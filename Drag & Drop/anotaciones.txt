@@ -1,0 +1,17 @@
+1. Pregunta que vas a publicar:
+    - Productos
+    - Vehiculos
+    - Inmuebles
+
+2. Ingresar en que categoria: electrodomesticos, celulares, etc.
+
+3.a. Marca
+3.b. Modelo
+3.c. Condicion
+3.d. Titulo del articulo
+3.e. Drag and Drop Foto
+3.f. Descripcion
+
+4. Precio
+
+5. Direccion, Nombre Apellido y etc
