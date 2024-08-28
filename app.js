@@ -19,7 +19,7 @@ const app = express();
 const corsOptions = {
     origin : '*',
     methods : ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders : ['Authorization', 'Cookie'],
+    allowedHeaders : ['Content-Type','Authorization', 'Cookie'],
     credentials: true
 };
 
