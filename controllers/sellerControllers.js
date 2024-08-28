@@ -1,40 +1,50 @@
-const db = require('../dbConfig');
+const db = require('../config');
 const { v4: uuidv4 } = require('uuid');
+const jwt = require('jsonwebtoken')
 
 exports.getAllSellers = (req, res) => {
-    const query = 'SELECT * FROM seller';
+    const query = 'SELECT * FROM seller s INNER JOIN users u ON s.userId = u.id;';
     db.query(query, (err, results) => {
         if (err) {
             console.error('err');
             res.status(500).send('Error obteniendo contactos');
             return;
         }
+        res.status(200).json(results)
     });
 }
 
 exports.getSellerById = (req, res) => {
-    const sellerId = req.params.id;
-    const query = 'SELECT * FROM seller WHERE sellerId = ?';
-    db.query(query, [sellerId], (err, result) => {
+    const token = req.cookies.token;
+
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
         if (err) {
-            console.error(err);
-            res.status(500).send('Error obteniendo contacto');
-            return;
+            console.error('Error verifying token:', err);
+            return res.status(500).send('Internal Server Error');
         }
-        if (result.length === 0) {
-            res.status(404).send('No encontrado')
-            return;
-        }
-        res.status(200).json(result[0]);
+
+        const userEmail = decoded.email;
+
+        const query = 'SELECT * FROM seller s INNER JOIN users u ON s.userId = u.id WHERE u.email = ?';
+        db.query(query, [userEmail], (err, result) => {
+            if (err) {
+                console.error('Error obteniendo contacto:', err);
+                return res.status(500).send('Error obteniendo contacto');
+            }
+            if (result.length === 0) {
+                return res.status(404).send('No encontrado');
+            }
+            res.status(200).json(result[0]);
+        });
     });
-}
+};
 
 exports.setNewSeller = (req, res) => {
     const sellerId = uuidv4();
-    const {userId} = req.params
+    const { userId } = req.params
     const query = 'INSERT INTO seller (id, userId, sells, publications, gains, dni) VALUES (?, ?, ?, ?, ?, ?)'
-    const {dni} = req.body
-    db.query(query, [sellerId, userId, 0,  0, 0, dni], (err, result) => {
+    const { dni } = req.body
+    db.query(query, [sellerId, userId, 0, 0, 0, dni], (err, result) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error');
@@ -60,14 +70,14 @@ exports.deleteSeller = (req, res) => {
 exports.updateSeller = (req, res) => {
     const { sellerId } = req.params;
     const id = req.params
-    const {sells, publications, gains, dni} = req.body;
+    const { sells, publications, gains, dni } = req.body;
     const query = 'UPDATE users SET id = ?, sells = ?, publications = ?, gains = ?, dni = ?'
     db.query(query, [sellerId, sells, publications, gains, dni], (err, result) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('Error actualizando el usuario');
-                return;
-            }
-            res.send('Usuario actualizado');
-        });
-}
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error actualizando el usuario');
+            return;
+        }
+        res.send('Usuario actualizado');
+    });
+};

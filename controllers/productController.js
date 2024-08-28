@@ -1,5 +1,5 @@
-const db = require('../dbConfig');
-const { v4: uuidv4 } = require('uuid');
+const db = require('../config');
+const {v4: uuidv4} = require('uuid');
 
 exports.getAllProducts = (req, res) => {
     const query = 'SELECT * FROM product';
@@ -12,7 +12,7 @@ exports.getAllProducts = (req, res) => {
         }
         res.status(200).json(results);
     });
-}
+};
 
 exports.getProductById = (req, res) => {
     const sku = req.params.sku
@@ -25,7 +25,7 @@ exports.getProductById = (req, res) => {
         }
         res.status(200).json(result[0]);
     });
-}
+};
 
 exports.setNewProduct = (req, res) => {
     const query = 'INSERT INTO product (sku, description, type, price, stock) VALUES(?,?,?,?,?)'
@@ -39,7 +39,7 @@ exports.setNewProduct = (req, res) => {
         }
         res.send(201).send('Usuario creado');
     });
-}
+};
 
 exports.updateProduct = (req, res) => {
     const sku = req.params.sku;
@@ -58,7 +58,7 @@ exports.updateProduct = (req, res) => {
         }
         res.status(200).send('producto actualizado');
     });
-}
+};
 
 exports.deleteProduct = (req, res) => {
     const sku = req.params.sku;
@@ -76,4 +76,4 @@ exports.deleteProduct = (req, res) => {
         }
         res.status(200).send('producto eliminado correctamente')
     });
-}
+};

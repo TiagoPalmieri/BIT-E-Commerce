@@ -1,5 +1,5 @@
-const db = require('../dbConfig');
 const { v4: uuidv4 } = require('uuid');
+const db = require('../config');
 
 exports.getAllSells = (req, res) => {
     const query = 'SELECT * FROM sell';
@@ -11,7 +11,7 @@ exports.getAllSells = (req, res) => {
         }
         res.json(results);
     });
-}
+};
 
 exports.getSellById = (req, res) => {
     const { id } = req.params;
@@ -28,7 +28,7 @@ exports.getSellById = (req, res) => {
         }
         res.json(results[0]);
     });
-}
+};
 
 exports.setNewSell = (req, res) => {
     const { id, sellDate, buyerId, sellerId } = req.body;
@@ -41,7 +41,7 @@ exports.setNewSell = (req, res) => {
         }
         res.status(201).send('Venta creada');
     });
-}
+};
 
 exports.updateSell = (req, res) => {
     const { id } = req.params;
@@ -55,7 +55,7 @@ exports.updateSell = (req, res) => {
         }
         res.status(200).send('Venta actualizada');
     });
-}
+};
 
 exports.deleteSell = (req, res) => {
     const { id } = req.params;
@@ -68,5 +68,4 @@ exports.deleteSell = (req, res) => {
         }
         res.status(200).send('Venta eliinada')
     });
-}
-
+};
