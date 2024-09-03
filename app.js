@@ -38,5 +38,4 @@ app.use('/api/v1', sellRoutes);
 app.use('/api/v1', transactionRoutes);
 app.use('/api/v1', userRoutes);
 
-
 module.exports = app;

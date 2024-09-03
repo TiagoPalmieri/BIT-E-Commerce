@@ -41,16 +41,17 @@
                 userPassword: password
             };
 
-            axios.post('http://localhost:3000/api/v1/auth/login', request, {
+            axios.post('http://130.10.3.10:3000/api/v1/auth/login', request, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             .then(response => {
                 console.log('éxito', response.data);
-                if (response.status === 200 && response.data.redirect) {
+                if (response.status === 200) {
                     // Redirigir si el servidor proporciona una URL de redirección
-                    window.location.href = response.data.redirect;
+                    window.location.href = '/home'
+                    
                 }
             })
             .catch(error => {

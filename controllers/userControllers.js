@@ -117,6 +117,6 @@ exports.login = (req, res) => {
         res.cookie('token', token, { httpOnly: true });
         
         // Puedes redirigir a una página específica después del inicio de sesión exitoso
-        res.status(200).json({ accessToken: token, redirect: '../main-page/index.html' });
+        res.status(200).json({ accessToken: token});
     });
 };
