@@ -1,0 +1,24 @@
+:root {
+    --primary: #c2f84f;
+    --secondary: #a7d9a1;
+    --accent: #97a68c;
+    --text: #272725;
+    --textsec: #939393;
+    --background: #fafafafa;
+    --approved: green;
+    --denied: red;
+    --shadow: rgba(0, 0, 0, 0.250);
+    --fuente: "Lexend Exa", sans-serif;
+}
+
+.ad {
+    margin: 35px;
+    position: sticky;
+    background-color: var(--text);
+    padding: 15px;
+    border-radius: 35px;
+}
+
+.ad p {
+    color: var(--background)
+}

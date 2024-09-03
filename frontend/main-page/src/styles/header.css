@@ -1,0 +1,68 @@
+:root{
+    --primary: #c2f84f;
+    --secondary: #a7d9a1;
+    --accent: #97a68c;
+    --text: #272725;
+    --textsec: #939393;
+    --background: #fafafafa;
+    --approved: green;
+    --denied: red;
+    --shadow: rgba(0, 0, 0, 0.250);
+    --fuente: "Lexend Exa", sans-serif;
+}
+
+header {
+    width: 40%;
+    border-radius: 50px;
+    height: 50px;
+    top: 35px;
+    position: sticky;
+    background-color: var(--text);
+    color: white;
+    z-index: 1000; /* Asegúrate de que el header esté por encima de otros elementos */
+    left: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+header nav ul li a{
+    color: var(--background);
+}
+
+header nav ul li a:visited {
+    color: var(--background);
+}
+
+header nav ul li a:hover{
+    color: var(--background);
+}
+
+@media (min-width: 1024px){
+    header{
+        left: 35%;
+    }
+}
