@@ -47,7 +47,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     height: 300px;
     margin-top: 20px;
@@ -57,12 +57,12 @@ body {
 .contenedor-presentacion {
     display: flex;
     background-color: #282826;
-    width: 100%;
+    width: 90%;
     height: 500px;
     margin-top: 300px;
     border-radius: 15px;
     position: relative;
-    padding: 20px;
+    /* padding: 20px; */
     z-index: 2;
     overflow: hidden;
     justify-content: flex-end; 
@@ -106,10 +106,10 @@ body {
 }
 
 img{
-    width: 40%;
+    width: 45%;
     z-index: 3;
     position: relative;
-    margin-left: 70px
+    margin-right: 20px;
 }
 
 .contenedor-parrafo{
@@ -117,13 +117,13 @@ img{
     justify-content: flex-end; 
     align-items: center;
     position: relative;
-    margin-left: 90px;
+    width: 50%;
 }
 
 
 p {
     color: white;
-    font-size: 33px;
+    font-size: 28px;
     line-height: 1.6;
     margin-top: 10px;
     position: relative;
@@ -166,7 +166,7 @@ p {
 
 .contenedor-banner1 img{
     display: flex;
-    width: 80%;
+    width: 90%;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -175,7 +175,7 @@ p {
 
 .contenedor-banner2 img{
     display: flex;
-    width: 80%;
+    width: 90%;
     justify-content: center;
     align-items: center;
     margin: 0 auto;

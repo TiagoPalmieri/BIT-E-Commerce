@@ -1,0 +1,71 @@
+:root{
+    --primary: #c2f84f;
+    --secondary: #a7d9a1;
+    --accent: #97a68c;
+    --text: #272725;
+    --textsec: #939393;
+    --background: #fafafafa;
+    --approved: green;
+    --denied: red;
+    --shadow: rgba(0, 0, 0, 0.250);
+    --fuente: "Lexend Exa", sans-serif;
+}
+
+.slider-container {
+  margin: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 725px;
+}
+
+.slider{
+  width: 1200px;
+  height: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.slides{
+  width: 500%;
+  height: 500px;
+  display: flex;
+}
+
+.slides input{
+  display: none;
+}
+
+.slide {
+  height: 1200px;
+  transition: 2s;
+}
+
+.slide img {
+  width: 1200px;
+  height: 500px;
+}
+
+.manual-btn:hover {
+  background: var(--primary)
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0px;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -1200px;
+}
+
+#radio3:checked ~ .first {
+  margin-left: -2400px;
+}
+
+#radio4:checked ~ .first {
+  margin-left: -3600px;
+}

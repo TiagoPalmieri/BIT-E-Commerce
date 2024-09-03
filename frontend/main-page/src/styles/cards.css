@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --primario: #D9D9D9;
+    --primarioSecundario: #ECF0F1;
+    --primarioOscuro: #282826;
+    --secundario: #EA5656;
+    --terciario: #110F36;
+    --approved: green;
+    --denied: red;
+    --blanco: #FAFAFA;
+    --negro: #000;
+    --shadow: rgba(0, 0, 0, 0.500);
+    --grey: #909497;
+    --fuentePrincipal: "Ubuntu", sans-serif;
+}
+
+.card-background {
+    background-color: var(--background);
+    border-radius: 1rem;
+    width: 12rem;
+    height: 16rem;
+    filter: drop-shadow(0px 0px 2.5px var(--shadow));
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5rem;
+    contain: content;
+}
+
+.card-background:hover{
+    transform: scale(1.1);
+}
+
+.card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:75%; 
+    contain: content;
+}
+
+.card-image img{
+    width: 100%;
+}
+
+.card-text{
+    width: 100%;
+    contain: content;
+    text-align: center;
+}
+
+.card-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  contain: content;
+  gap: 1px;
+}
+
+.card-info .material-symbols-outlined {
+    padding: 1px;
+    text-align: center;
+    font-size: 20px;
+    color: var(--text);
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 0
+}
+
+.card-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    contain: content;
+    gap: 5%;
+}
+
+.card-price p {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.card-price .currency {
+    font-size: 20px;
+}
+
+.card-shipping{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    contain: content;
+}
+
+
+.card-shipping p {
+    color: var(--textsec);
+}
+
+.cards-container{
+    height: 725px;
+    margin: 35px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(2, 17.5rem);
+    gap: 1rem;
+}

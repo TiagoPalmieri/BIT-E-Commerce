@@ -1,0 +1,199 @@
+:root {
+    --primario: #D9D9D9;
+    --primarioSecundario: #ECF0F1;
+    --primarioOscuro: #282826;
+    --secundario: #EA5656;
+    --terciario: #110F36;
+    --approved: green;
+    --denied: red;
+    --blanco: #FAFAFA;
+    --negro: #000;
+    --shadow: rgba(0, 0, 0, 0.500);
+    --grey: #909497;
+    --fuentePrincipal: "Ubuntu", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: ease-in-out 250ms;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 160vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    padding-top: 60px; /* Ajusta el relleno superior para compensar el header fijo */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    background-color: #A7D9A1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.Go-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blanco);
+    height: 5rem;
+    width: 10rem;
+    border-radius: 0rem 0rem 3rem 0rem;
+    gap: 3rem;
+    border: none; /* Elimina el borde por defecto de los botones */
+    color: var(--primarioOscuro);
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none; /* Asegura que el texto dentro de .Go-back no tenga subrayado */
+    cursor: pointer;
+}
+
+.Go-back:hover {
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+
+a {
+    text-decoration: none; 
+}
+
+.items {
+    display: flex; /* Asegura que los ítems estén en una fila */
+    gap: 30px; /* Espacio entre los ítems */
+    margin-right: 2rem;
+}
+
+.items a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.items .account:hover{
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+
+.items .ayuda:hover{
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    gap: 10px; /* Espacio entre la imagen y el formulario */
+}
+
+.form-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 50%; 
+    margin-top: 2rem;
+}
+
+.form-details label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.form-details input,
+.form-details select,
+.form-details textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-details option {
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.form-details button {
+    padding: 10px;
+    background-color: #A7D9A1;
+    color: black;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.form-details button:hover {
+    background-color: #b3ebad;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.hero {
+    border: 2px dashed #ddd;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 100%; /* Asegura que el contenedor de la imagen use todo el ancho disponible */
+    max-width: 300px; /* Define un ancho máximo para el contenedor de la imagen */
+    margin: 0 auto 20px; /* Centra el div horizontalmente y agrega margen inferior */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#drop-area{
+    width: 100%;
+    height: 100%;
+}
+
+#img-view {
+    width: 100%;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+@media (max-width: 768px) {
+    #img-view p, #img-view .span {
+        font-size: 12px;
+    }
+    
+}
+
+@media (max-width: 442px) {
+    #img-view .material-symbols-outlined{
+        scale: 0.8;
+    }
+    #img-view p, #img-view .span {
+        font-size: 8px;
+    }
+    .hero {
+        max-width: 200px;
+        height: 7.5rem;
+    }
+    #drop-area {
+        padding-bottom: 10px;
+    }
+}

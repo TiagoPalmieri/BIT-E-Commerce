@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ventas</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <button class="Go-back">Go Back</button>
+        </a>
+            
+        <div class="items">
+            <a class ="account" href="#">Account</a>
+            <a class ="ayuda" href="#">Ayuda</a>
+        </div>
+    </header>
+    <div class="main-container">
+        <!-- Formulario de ingreso de detalles del producto -->
+        <form action="#" method="post" class="form-details">
+            <!-- Selección de categoría -->
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="electrodomesticos">Electrodomésticos</option>
+                <option value="celulares">Celulares</option>
+                <option value="muebles">Muebles</option>
+                <!-- Agregar más opciones según sea necesario -->
+            </select>
+
+            <!-- Detalles del producto -->
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required>
+
+            <label for="condicion">Condición:</label>
+            <select id="condicion" name="condicion" required>
+                <option value="nuevo">Nuevo</option>
+                <option value="usado">Usado</option>
+            </select>
+
+            <label for="titulo">Título del Artículo:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <!-- Drag and Drop para la foto -->
+            <div class="hero">
+                <label for="input-file" id="drop-area">
+                    <input type="file" accept="image/*" id="input-file" hidden required>
+                    <div id="img-view">
+                        <span class="material-symbols-outlined">
+                            cloud_upload
+                        </span>
+                        <p>Arrastra y suelta o haz clic aquí <br> para subir una imagen</p>
+                        <span class="span">Sube cualquier imagen desde tu escritorio</span>
+                    </div>
+                </label>
+            </div>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+            <!-- Precio del producto -->
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required>
+
+            <!-- Detalles del vendedor -->
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="nombre">Nombre y Apellido:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <!-- Botón de envío -->
+            <button class="button" type="submit">Publicar</button>
+        </form>
+    </div>
+    <script>
+        const axios = require('axios')
+const mail = document.getElementById('email').value
+const user_pass = document.getElementById('password').value
+const request = {
+    email: mail,
+    userPassword: user_pass
+} 
+
+axios.post('localhost:3000/api/v1/auth/register', request, {
+    headers: {
+    'Content-Type': 'application/json',
+    'Authorization': ''
+  }
+})
+  .then(response => {
+    console.log('exito');
+})
+  .catch(error => {
+    console.error(error);
+});
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+

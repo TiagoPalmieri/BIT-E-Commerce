@@ -1,0 +1,180 @@
+:root {
+    --primario: #D9D9D9;
+    --primarioSecundario: #ECF0F1;
+    --primarioOscuro: #282826;
+    --secundario: #EA5656;
+    --terciario: #110F36;
+    --approved: green;
+    --denied: red;
+    --blanco: #FAFAFA;
+    --negro: #000;
+    --shadow: rgba(0, 0, 0, 0.500);
+    --grey: #909497;
+    --fuentePrincipal: "Ubuntu", sans-serif;
+}
+
+* {
+    margin: 0; /* Añadir padding: 0 para evitar cualquier padding por defecto en elementos */
+    transition: ease-in-out 250ms;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye los elementos al máximo en el contenedor */
+    background-color: #A7D9A1;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px; /* Espacio interno opcional para que no se toquen los bordes */
+    position: relative; /* Asegura que los elementos hijos se posicionen en relación al header */
+}
+
+/* Logo */
+.Go-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blanco);
+    height: 5rem;
+    width: 10rem;
+    border-radius: 0rem 0rem 3rem 0rem;
+    gap: 3rem;
+    border: none; /* Elimina el borde por defecto de los botones */
+    color: var(--primarioOscuro);
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none; /* Asegura que el texto dentro de .Go-back no tenga subrayado */
+    cursor: pointer;
+}
+
+.Go-back:hover {
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+
+a {
+    text-decoration: none; 
+}
+
+
+/* Ítems */
+.items {
+    display: flex; /* Asegura que los ítems estén en una fila */
+    gap: 30px; /* Espacio entre los ítems */
+    margin-right: 2rem;
+}
+
+.items a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.items .account:hover{
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+
+.items .ayuda:hover{
+    filter: drop-shadow(0px 0px 10px var(--shadow));
+}
+.mitad {
+    flex: 1;
+    width: 100%;
+}
+
+.mitad-arriba {
+    background-color: #A7D9A1;
+}
+
+h1 {
+    position: absolute;
+    margin-bottom: 30%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    position: absolute;
+}
+
+.card {
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    margin: 5rem;
+    background-color: #F8FFF8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card a {
+    display: flex;
+    justify-content: center; /* Ajustado de justify-self a justify-content para centrar contenido en el card */
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    text-decoration: none;
+    color: #282826;
+}
+
+.card img {
+    width: 80%;
+}
+
+.card:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width:  992px) {
+    .container{
+        margin-top: 30rem;
+        display: grid;
+        height: 60%;
+        grid-template-rows: repeat(3, 15rem);
+        margin-bottom: 3rem;
+    }
+    
+    .card {
+        scale: 0.7;
+        margin: 3rem;
+    }
+}
+
+@media (max-width:  768px) {
+    .container{
+        margin-top: 30rem;
+        margin-bottom: 2rem;
+        display: grid;
+        height: 60%;
+        grid-template-rows: repeat(3, 10rem);
+
+    }
+    
+    .card {
+        scale: 0.5;
+        margin: 2rem;
+    }
+
+    h1 {
+        padding: 1rem;
+        font-size: 20px;
+    }
+}

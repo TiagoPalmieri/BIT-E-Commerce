@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login For Html Css</title>
+    <link rel="stylesheet" href="stylein.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="login-form">
+        <h1>Sign In</h1>
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <h2>Sign in</h2>
+                    <form action="#" id="myForm">
+                        <input type="email" placeholder="User Name" required autofocus="" id="email">
+                        <input type="password" placeholder="User Password" required autofocus="" id="password">
+                        <button class="btn" type="submit">Login</button>
+                    </form>
+                    <p class="account">Don't Have An Account? <a href="signup.html">Register</a></p>
+                </div>
+                <div class="form-img">
+                    <img src="iPhone 15.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log('HOLA')
+        const mensajeError = document.getElementsByName("error")[0] || document.createElement('div');
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            const mail = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const request = {
+                email: mail,
+                userPassword: password
+            };
+
+            axios.post('http://localhost:3000/api/v1/auth/login', request, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('éxito', response.data);
+                if (response.status === 200 && response.data.redirect) {
+                    // Redirigir si el servidor proporciona una URL de redirección
+                    window.location.href = response.data.redirect;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                mensajeError.classList.toggle("escondido", false);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -17,7 +17,7 @@ const helmet = require('helmet');
 const app = express();
 
 const corsOptions = {
-    origin : '*',
+    origin : 'http://127.0.0.1:5500',
     methods : ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders : ['Content-Type','Authorization', 'Cookie'],
     credentials: true
@@ -27,7 +27,6 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 app.use(cors(corsOptions));
 
 app.use('/api/v1', billingRoutes);

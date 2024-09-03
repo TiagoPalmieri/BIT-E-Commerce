@@ -94,22 +94,29 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
     const { email, userPassword } = req.body;
     const query = 'SELECT * FROM users WHERE email = ?';
+    
     db.query(query, [email], (err, results) => {
         if (err) {
             console.error(err);
-            return res.status(500).json({message: 'Database error'});
+            return res.status(500).json({ message: 'Database error' });
         }
 
-        if (results.length === 0) return res.status(404).json('User not found');
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
 
         const user = results[0];
-        const isValidPassword = bcrypt.compareSync(userPassword , user.userPassword);
+        const isValidPassword = bcrypt.compareSync(userPassword, user.userPassword);
 
-        if (!isValidPassword) return res.status(401).send('Invalid password');
+        if (!isValidPassword) {
+            return res.status(401).json({ message: 'Invalid password' });
+        }
 
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.SECRET_KEY, { expiresIn: 86400 });
 
         res.cookie('token', token, { httpOnly: true });
-        res.status(200).json({accessToken: token});
+        
+        // Puedes redirigir a una página específica después del inicio de sesión exitoso
+        res.status(200).json({ accessToken: token, redirect: '../main-page/index.html' });
     });
 };

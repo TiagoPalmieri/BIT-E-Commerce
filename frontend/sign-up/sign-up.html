@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="stylesup.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="login-form">
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <h2>Log In</h2>
+                    <form id="myForm" action="#">
+                        <input type="email" name="" placeholder="Email" required autofocus="" id="email">
+                        <input type="text" name="" placeholder="User Name" required autofocus="">
+                        <input type="password" name="" placeholder="User Password" required autofocus="" id="password">
+                        <button class="btn" type="submit">
+                            Login
+                        </button>
+                    </form>
+                    <p class="account">Do you already have an account? <a href="signin.html">Log In</a></p>
+                </div>
+                <div class="form-img">
+                    <img src="src/PC.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            const mail = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const request = {
+                email: mail,
+                userPassword: password
+            };
+
+            axios.post('http://localhost:3000/api/v1/auth/register', request, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('éxito', response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+:root{
+    --primary: #c2f84f;
+    --secondary: #a7d9a1;
+    --accent: #97a68c;
+    --text: #272725;
+    --textsec: #939393;
+    --background: #fafafafa;
+    --approved: green;
+    --denied: red;
+    --shadow: rgba(0, 0, 0, 0.250);
+    --fuente: "Lexend Exa", sans-serif;
+}
+
+*{
+    font-family: var(--fuente);
+    transition: all ease-in-out 250ms;
+}
+
+body {
+  margin: 0 auto;
+  background-color: #fafafafa;
+  justify-content: center;
+  align-items: center;
+  contain: content;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
