@@ -7,7 +7,7 @@ exports.getAllSellers = (req, res) => {
     db.query(query, (err, results) => {
         if (err) {
             console.error('err');
-            res.status(500).send('Error obteniendo contactos');
+            res.status(500).json({ message: 'Error obteniendo contactos' });
             return;
         }
         res.status(200).json(results)
@@ -20,7 +20,7 @@ exports.getSellerById = (req, res) => {
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
         if (err) {
             console.error('Error verifying token:', err);
-            return res.status(500).send('Internal Server Error');
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
 
         const userEmail = decoded.email;
@@ -29,10 +29,10 @@ exports.getSellerById = (req, res) => {
         db.query(query, [userEmail], (err, result) => {
             if (err) {
                 console.error('Error obteniendo contacto:', err);
-                return res.status(500).send('Error obteniendo contacto');
+                return res.status(500).json({ message: 'Error obteniendo contacto' });
             }
             if (result.length === 0) {
-                return res.status(404).send('No encontrado');
+                return res.status(404).json({ message: 'No encontrado' });
             }
             res.status(200).json(result[0]);
         });

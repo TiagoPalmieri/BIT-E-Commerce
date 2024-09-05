@@ -1,12 +1,12 @@
 const db = require('../config');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 exports.getAllPublications = (req, res) => {
     const query = 'SELECT * FROM publication';
     db.query(query, (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo las compañías');
+            res.status(500).json({ message: 'Error obteniendo las compañías' });
             return;
         }
         res.json(results);
@@ -19,11 +19,11 @@ exports.getPublicationById = (req, res) => {
     db.query(query, [id], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo la compañía');
+            res.status(500).json({ message: 'Error obteniendo la compañía' });
             return;
         }
         if (result.length === 0) {
-            res.status(404).send('Compañía no encontrada');
+            res.status(404).json({ message: 'Compañía no encontrada' });
             return;
         }
         res.json(result[0]);
@@ -37,10 +37,10 @@ exports.setNewPublication = (req, res) => {
     db.query(query, [id, date, description, title, sellerId, productSku], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error creando la publicacion');
+            res.status(500).json({ message: 'Error creando la publicacion' });
             return;
         }
-        res.status(201).send('publicacion creada');
+        res.status(201).json({ message: 'publicacion creada' });
     });
 };
 
@@ -51,14 +51,14 @@ exports.updatePublication = (req, res) => {
     db.query(query, { date, description, title, productSku, id }, (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error actualizando la publicacion');
+            res.status(500).json({ message: 'Error actualizando la publicacion' });
             return;
         }
         if (resultaffectedRows === 0) {
-            res.status(404).send('publicacion no encontradda');
+            res.status(404).json({ message: 'publicacion no encontradda' });
             return;
         }
-        res.status(200).send('publicacion actualizada');
+        res.status(200).json({ message: 'publicacion actualizada' });
     });
 };
 
@@ -68,13 +68,13 @@ exports.deletePublication = (req, res) => {
     db.query(query, [id], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error eliminando la publicacion');
+            res.status(500).json({ message: 'Error eliminando la publicacion' });
             return;
         }
         if (result.affectedRows === 0) {
-            res.status(404).send('publicacion no encontrada');
+            res.status(404).json({ message: 'publicacion no encontrada' });
             return;
         }
-        res.status(200).send('publicacion eliminada');
+        res.status(200).json({ message: 'publicacion eliminada' });
     });
 };

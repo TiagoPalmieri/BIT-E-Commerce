@@ -6,7 +6,7 @@ exports.getAllSells = (req, res) => {
     db.query(query, (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo las ventas');
+            res.status(500).json({ message: 'Error obteniendo las ventas' });
             return;
         }
         res.json(results);
@@ -19,11 +19,11 @@ exports.getSellById = (req, res) => {
     db.query(query, [id], (err, resutls) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo la venta');
+            res.status(500).json({ message: 'Error obteniendo la venta' });
             return;
         }
         if (results.length === 0) {
-            res.status(404).send('Venta no encontrada');
+            res.status(404).json({ message: 'Venta no encontrada' });
             return;
         }
         res.json(results[0]);
@@ -36,10 +36,10 @@ exports.setNewSell = (req, res) => {
     db.query(query, [id, sellDate, buyerId, sellerId], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error creando la venta');
+            res.status(500).json({ message: 'Error creando la venta' });
             return;
         }
-        res.status(201).send('Venta creada');
+        res.status(201).json({ message: 'Venta creada' });
     });
 };
 
@@ -50,10 +50,10 @@ exports.updateSell = (req, res) => {
     db.query(query, [sellDate, buyerId, sellerId, id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error actualizando la venta');
+            res.status(500).json({ message: 'Error actualizando la venta' });
             return;
         }
-        res.status(200).send('Venta actualizada');
+        res.status(200).json({ message: 'Venta actualizada' });
     });
 };
 
@@ -63,9 +63,9 @@ exports.deleteSell = (req, res) => {
     db.query(query, [id], (err, resutls) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error eliminando la venta');
+            res.status(500).json({ message: 'Error eliminando la venta' });
             return;
         }
-        res.status(200).send('Venta eliinada')
+        res.status(200).json({ message: 'Venta eliinada' })
     });
 };

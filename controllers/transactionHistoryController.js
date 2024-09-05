@@ -6,7 +6,7 @@ exports.getAllTransactions = (req, res) => {
     db.query(query, (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo las transacciones');
+            res.status(500).send({ message: 'Error obteniendo las transacciones' });
             return;
         }
         res.json(results);
@@ -19,11 +19,11 @@ exports.getTransactionsById = (req, res) => {
     db.query(query, [id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo la transacción');
+            res.status(500).json({ message: 'Error obteniendo la transacción' });
             return;
         }
         if (results.length === 0) {
-            res.status(404).send('Transacción no encontrada');
+            res.status(404).json({ message: 'Transacción no encontrada' });
             return;
         }
         res.json(results[0]);
@@ -36,10 +36,10 @@ exports.setNewTransaction = (req, res) => {
     db.query(query, [idTransaction, buyerId, sellerId, productSku], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error creando la transacción');
+            res.status(500).json({ message: 'Error creando la transacción' });
             return;
         }
-        res.status(201).send('Transacción creada');
+        res.status(201).json({ message: 'Transacción creada' });
     });
 }
 
@@ -50,10 +50,10 @@ exports.updateTransaction = (req, res) => {
     db.query(query, [buyerId, sellerId, productSku, id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error acutalizando la transacción');
+            res.status(500).json({ message: 'Error acutalizando la transacción' });
             return;
         }
-        res.status(200).send('Transacción actualizada');
+        res.status(200).json({ message: 'Transacción actualizada' });
     });
 }
 
@@ -63,9 +63,9 @@ exports.deleteTransaction = (req, res) => {
     db.query(query, [id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error eliminando la transacción');
+            res.status(500).json({ message: 'Error eliminando la transacción' });
             return;
         }
-        res.status(200).send('Transacción eliminada');
+        res.status(200).json({ message: 'Transacción eliminada' });
     });
 };

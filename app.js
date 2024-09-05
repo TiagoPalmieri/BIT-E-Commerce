@@ -17,9 +17,9 @@ const helmet = require('helmet');
 const app = express();
 
 const corsOptions = {
-    origin : '*',
-    methods : ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders : ['Content-Type','Authorization', 'Cookie'],
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
     credentials: true
 };
 

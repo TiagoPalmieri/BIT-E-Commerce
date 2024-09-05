@@ -1,12 +1,12 @@
 const db = require('../config');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 exports.getAllBillings = (req, res) => {
     const query = 'SELECT * FROM billing';
     db.query(query, (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo las facturas');
+            res.status(500).json({ message: 'Error obteniendo las facturas' });
             return;
         }
         res.json(results);
@@ -19,11 +19,11 @@ exports.getBillingById = (req, res) => {
     db.query(query, [id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error obteniendo la factura');
+            res.status(500).json({ message: 'Error obteniendo la factura' });
             return;
         }
         if (results.length === 0) {
-            res.status(404).send('Factura no encontrada');
+            res.status(404).json({ message: 'Factura no encontrada' });
             return;
         }
         res.json(results[0]);
@@ -36,10 +36,10 @@ exports.setNewBilling = (req, res) => {
     db.query(query, [invoiceId, buyDate, sellerId, buyerId], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error creando la factura');
+            res.status(500).json({ message: 'Error creando la factura' });
             return;
         }
-        res.status(201).send('Factura creada');
+        res.status(201).json({ message: 'Factura creada' });
     });
 };
 
@@ -50,10 +50,10 @@ exports.updateBilling = (req, res) => {
     db.query(query, [buyDate, sellerId, buyerId, id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error actualizando la factura');
+            res.status(500).json({ message: 'Error actualizando la factura' });
             return;
         }
-        res.status(200).send('Factura actualizada');
+        res.status(200).json({ message: 'Factura actualizada' });
     });
 };
 
@@ -63,9 +63,9 @@ exports.deleteBilling = (req, res) => {
     db.query(query, [id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error eliminando la factura');
+            res.status(500).json({ message: 'Error eliminando la factura' });
             return;
         }
-        res.status(200).send('Factura eliminada');
+        res.status(200).json({ message: 'Factura eliminada' });
     });
 };

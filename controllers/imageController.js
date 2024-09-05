@@ -1,5 +1,5 @@
 const db = require('../config');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 exports.getAllImages = (req, res) => {
     const query = 'SELECT * FROM image where productSku = ?';
@@ -7,7 +7,7 @@ exports.getAllImages = (req, res) => {
     db.query(query, [productSku], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error dando las imagenes');
+            res.status(500).json({ message: 'Error dando las imagenes' });
             return;
         }
         res.json(results);
@@ -21,7 +21,7 @@ exports.getImageById = (req, res) => {
     db.query(query, [sku, id], (err, results) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Imagenes obtenidas');
+            res.status(500).json({ message: 'Imagenes obtenidas' });
             return;
         }
         res.json(results[0]);
@@ -38,10 +38,10 @@ exports.setNewImage = (req, res) => {
     db.query(query, [id, format, weight, resolution, directory, sku], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Hubo un error');
+            res.status(500).json({ message: 'Hubo un error' });
             return;
         }
-        res.status(201).send('Producto agregado');
+        res.status(201).json({ message: 'Producto agregado' });
     });
 }
 
@@ -53,14 +53,14 @@ exports.updateImage = (req, res) => {
     db.query(query, [format, weight, resolution, directory, sku, id], (err, result) => {
         if (err) {
             console.error(error);
-            res.status(500).send('Error');
+            res.status(500).json({ message: 'Error' });
             return;
         }
         if (result.affectedRows === 0) {
-            res.status(404).send('No se encontró este recurso');
+            res.status(404).json({ message: 'No se encontró este recurso' });
             return;
         }
-        res.status(200).send('imagen actualizada')
+        res.status(200).json({ message: 'imagen actualizada' })
     });
 }
 
@@ -71,13 +71,13 @@ exports.deleteImage = (req, res) => {
     db.query(query, [id], (err, result) => {
         if (err) {
             console.error(err);
-            res.status(500).send('Error');
+            res.status(500).json({ message: 'Error' });
             return;
         }
         if (result.affectedRows === 0) {
-            res.status(404).send('No se encontro el recurso');
+            res.status(404).json({ message: 'No se encontro el recurso' });
             return;
         }
-        res.status(200).send('Todo bien');
+        res.status(200).json({ message: 'Todo bien' });
     })
 }
