@@ -24,6 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   contain: content;
+  overflow: auto;
 }
 
 p {

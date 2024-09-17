@@ -1,4 +1,5 @@
 :root{
+    text-decoration: none;
     --primary: #c2f84f;
     --secondary: #a7d9a1;
     --accent: #97a68c;
@@ -51,14 +52,17 @@ li{
 
 header nav ul li a{
     color: var(--background);
+    text-decoration: none;
 }
 
 header nav ul li a:visited {
     color: var(--background);
+    text-decoration: none;
 }
 
 header nav ul li a:hover{
     color: var(--background);
+    text-decoration: none;
 }
 
 @media (min-width: 1024px){

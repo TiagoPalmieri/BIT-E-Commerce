@@ -2,6 +2,7 @@
 
 :root{
     --primary: #c2f84f;
+    --primaryshadow: #c2f84f80;
     --secondary: #a7d9a1;
     --accent: #97a68c;
     --text: #272725;
@@ -13,19 +14,19 @@
     --fuente: "Lexend Exa", sans-serif;
 }
 
-
 * {
     font-family: var(--fuente);
     margin: 0;
 }
+
 
 .background{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--accent);
-    height: 768px;
-    width: 1366px;
+    height: 1336px;
+    width: 768px;
 }
 
 .leftPart{
@@ -103,4 +104,24 @@
 
 .rightPart img:hover{
     transform: scale(1.1);
+}
+
+.error{
+    text-align: center;
+    width: auto;
+    color: var(--primary);
+}
+
+@media (min-width:1600px){
+    .background{
+        width: 1600px;
+        height: 500px;
+    }
+}
+
+@media (max-width:1920px){
+    .background{
+        width: 1920px;
+        height: 900px;
+    }
 }
