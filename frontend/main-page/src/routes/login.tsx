@@ -1,39 +1,53 @@
-import { Fragment } from "react/jsx-runtime"
-import '../styles/login.css'
-import '../scripts/login.js'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {useState} from 'react';
+import { Fragment } from 'react';
+import '../styles/login.css';
+import axios from 'axios';
+import macbook from  '../assets/macbook.png'
 
-const Login: React.FC = () => {
+export default function Login(){
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  console.log(email);
+  
+  const request = {
+    email: email,
+    userPassword: password
+  }
+
+  axios.post('localhost:3000/api/v1/auth/register', request, {
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': ''
+    }
+  })
+    .then(response => {
+      
+      console.log('exito');
+  })
+    .catch(error => {
+      console.error(error);
+  });
+  
   return (
     <Fragment>
-      <div className="login-form">
-        <h1>Sign In</h1>
-        <div className="container">
-          <div className="main">
-            <div className="content">
-              <h2>Sign in</h2>
-              <form action="#" id="myForm">
-                <input type="email" placeholder="User Name" id="email"></input>
-                <input
-                  type="password"
-                  placeholder="User Password"
-                  id="password"
-                ></input>
-                <button className="btn" type="submit">
-                  Login
-                </button>
-              </form>
-              <p className="account">
-                Don't Have An Account? <a href="signup.html">Register</a>
-              </p>
-              <div className="form-img">
-                <img src="iPhone 15.png" alt=""></img>
-              </div>
-            </div>
+      <body className='body-login'>  
+        <div className='background'>
+          <div className='leftPart'>
+            <p id='Login'>Login</p>
+            <form action="#" id='myForm'>
+              <input type="email" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+              <input type="password" value={password} placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
+              <button className="btn" type="submit"><a href="/main">Login</a></button>
+            </form>
+            <p>Do You already have an account?<a href="#">Sign up</a></p>
+          </div>
+          <div className='rightPart'>
+            <img src={macbook} alt="MacBook" />
           </div>
         </div>
-      </div>
+      </body>
     </Fragment>
   );
-};
-
-export default Login;
+}

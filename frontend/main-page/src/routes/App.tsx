@@ -1,44 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Card from "../components/cards.js";
-import Carrousel from "../components/carrousel.js";
-import Head from "../components/header.js";
-import Welcome from "../components/welcome.js";
-import Login from "./login.js";
-import { Fragment } from "react";
-import "../styles/cards.css";
-import "../styles/carrousel.css";
-import "../App.css";
-import "../styles/header.css";
-import "../styles/welcome.css";
-import "./styles/login.css";
+import { Fragment } from "react/jsx-runtime";
+import Login from '../routes/login';
+import Main from '../routes/mainpage';
+import LandingPage from "../routes/landingpage";
 
 function App(){
-  return (
-    <Fragment>
-      <Welcome />
-      <Head />
-      <section className="slider-container">
-        <Carrousel />
-      </section>
-      <section className="cards-container">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </section>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login></Login>}></Route>
-        </Routes>
-      </Router>
-    </Fragment>
-  );
+    return(
+        <Fragment>
+            <Router>
+                <Routes>
+                    <Route path="" element={<LandingPage></LandingPage>}></Route>
+                    <Route path="/login" element={<Login></Login>}></Route>
+                    <Route path="/main" element={<Main></Main>}></Route>
+                </Routes>
+            </Router>
+        </Fragment>
+    )
 }
 
 export default App;
