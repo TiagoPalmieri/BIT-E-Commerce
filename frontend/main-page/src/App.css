@@ -19,12 +19,12 @@
 }
 
 body {
-  margin: 0 auto;
+  margin: 0;
+  display: block;
   background-color: #fafafafa;
   justify-content: center;
   align-items: center;
   contain: content;
-  overflow: auto;
 }
 
 p {

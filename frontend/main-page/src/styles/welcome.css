@@ -17,6 +17,7 @@
     background-color: var(--text);
     padding: 15px;
     border-radius: 35px;
+    width: 50%;
 }
 
 .ad p {

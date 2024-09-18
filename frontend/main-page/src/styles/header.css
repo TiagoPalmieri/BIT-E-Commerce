@@ -20,7 +20,7 @@ header {
     position: sticky;
     background-color: var(--text);
     color: white;
-    z-index: 1000; /* Asegúrate de que el header esté por encima de otros elementos */
+    z-index: 5;
     left: 30%;
     display: flex;
     justify-content: center;
@@ -65,8 +65,8 @@ header nav ul li a:hover{
     text-decoration: none;
 }
 
-@media (min-width: 1024px){
+@media (max-width: 1025px){
     header{
-        left: 35%;
+        left: 30%;
     }
 }

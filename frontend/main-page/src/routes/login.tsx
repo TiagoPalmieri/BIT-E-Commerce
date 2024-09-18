@@ -1,11 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {useState, FormEvent} from 'react';
+import {useState, useEffect, FormEvent} from 'react';
 import { Fragment } from 'react';
 import '../styles/login.css';
 import axios from 'axios';
 import macbook from  '../assets/macbook.png'
 
 export default function Login(){
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

@@ -1,29 +1,32 @@
 import { Fragment } from "react/jsx-runtime"
 import '../styles/landingpage.css'
+import frame from '../assets/Frame 5.png'
+import secframe from '../assets/Frame 6.png'
+import macbook from '../assets/macbook.png'
 
 export default function LandingPage(){
     return(
         <Fragment>
     <div className="blob3"></div>
     <div className="blob4"></div>
-    <div className="contenedor-general">
-        <div className="contenedor-presentacion">
+    <div className="container">
+        <div className="presentation">
             <div className="blob1"></div> 
-            <img className="mac-bit" src="../assets/MacBook Air (15 inch).png"></img>
-            <div className="contenedor-parrafo">
+            <img className="mac-bit" src={macbook}></img>
+            <div className="context">
                 <p>BIT! es un e-commerce que redefine la experiencia de compra en línea con su enfoque innovador y minimalista.</p>
             </div>
         </div>
-        <div className="contenedor-bottoms">
+        <div className="buttons">
             <a href="#">SIGN UP</a>
             <a href="#">SIGN IN</a>
         </div>
-        <div className="contenedor-final">
-            <div className="contenedor-banner1">
-                <img className="banner1" src="../assets/Frame 5.png"></img>
+        <div className="banners-cont">
+            <div className="banner">
+                <img className="firstbanner" src={frame}></img>
             </div>
-            <div className="contenedor-banner2">
-                <img className="banner2" src="../assets/Frame 6.png"></img>
+            <div className="banner">
+                <img className="secbanner" src={secframe}></img>
             </div>
         </div>
     </div>  
