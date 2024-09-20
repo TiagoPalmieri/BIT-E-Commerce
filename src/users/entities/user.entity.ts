@@ -1,5 +1,9 @@
 import { Transform } from "class-transformer";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Review } from "src/reviews/entities/review.entity";
+import { Seller } from "src/seller/entities/seller.entity";
+import { Sell } from "src/sells/entities/sell.entity";
+import { TransactionHistory } from "src/transaction-history/entities/transaction-history.entity";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 
 export enum UserRole {
     Admin = 'Admin',
@@ -37,4 +41,17 @@ export class User {
         default: UserRole.User
     })
     rol: UserRole;
+
+    @OneToOne(()=> Seller, (seller) => seller.user)
+    seller: Seller; 
+
+    @OneToMany(() => Review, (review) => review.user)
+    reviews: Review[];
+
+    @OneToMany(() => TransactionHistory, (transactionHistory) => transactionHistory.buyer)
+  transactionHistories: TransactionHistory[]; 
+
+  @OneToMany(() => Sell, (sell) => sell.buyer)
+  sell: Sell[]; 
 }
+

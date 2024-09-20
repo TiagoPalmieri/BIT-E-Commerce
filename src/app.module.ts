@@ -2,10 +2,17 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { SellsModule } from './sells/sells.module';
+import { SellerModule } from './seller/seller.module';
+import { BillingModule } from './billing/billing.module';
+import { TransactionHistoryModule } from './transaction-history/transaction-history.module';
+import { ImagesModule } from './images/images.module';
+import { ReviewsModule } from './reviews/reviews.module';
+import { ProductsModule } from './products/products.module';
+import { PublicationsModule } from './publications/publications.module';
 
 @Module({
   imports: [
-    UsersModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -20,6 +27,15 @@ import { ThrottlerModule } from '@nestjs/throttler';
       ttl: 60,
       limit: 10,
     }]),
+    UsersModule,
+    SellsModule,
+    SellerModule,
+    BillingModule,
+    TransactionHistoryModule,
+    ImagesModule,
+    ReviewsModule,
+    ProductsModule,
+    PublicationsModule,
   ],
   controllers: [],
   providers: [],
