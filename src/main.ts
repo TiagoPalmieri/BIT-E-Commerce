@@ -4,20 +4,27 @@ import { ValidationPipe } from '@nestjs/common';
 import { AllExceptionsFilter } from './exceptionsHandler';
 import helmet from 'helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as fs from 'fs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+
+  const httpsOptions = {
+    key: fs.readFileSync('certificates/server.key'),
+    cert: fs.readFileSync('certificates/server.cert'),
+  };
+
+  const app = await NestFactory.create(AppModule, { httpsOptions });
 
   const config = new DocumentBuilder()
     .setTitle('API Documentation')
     .setDescription('The API description')
     .setVersion('1.0')
     .build();
-  
+
   app.setGlobalPrefix("api/v2");
-  app.useGlobalPipes( new ValidationPipe ({
+  app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
-    forbidNonWhitelisted: true, 
+    forbidNonWhitelisted: true,
     transform: true,
   }))
 
