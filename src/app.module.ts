@@ -10,6 +10,7 @@ import { ImagesModule } from './images/images.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { ProductsModule } from './products/products.module';
 import { PublicationsModule } from './publications/publications.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { PublicationsModule } from './publications/publications.module';
     ReviewsModule,
     ProductsModule,
     PublicationsModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

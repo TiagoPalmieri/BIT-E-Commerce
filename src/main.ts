@@ -1,10 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { AllExceptionsFilter } from './exceptionsHandler';
+// import { AllExceptionsFilter } from './exceptionsHandler';
 import helmet from 'helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as fs from 'fs';
+import { json } from 'express';
 
 async function bootstrap() {
 
@@ -14,6 +15,8 @@ async function bootstrap() {
   };
 
   const app = await NestFactory.create(AppModule, { httpsOptions });
+
+  app.use(json({ limit: '5mb' }));
 
   const config = new DocumentBuilder()
     .setTitle('API Documentation')
@@ -37,7 +40,7 @@ async function bootstrap() {
     credentials: true
   });
 
-  app.useGlobalFilters(new AllExceptionsFilter());
+  // app.useGlobalFilters(new AllExceptionsFilter());
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
