@@ -1,4 +1,4 @@
-import '../styles/welcome.css'
+import '../styles/snackbar.css'
 
 function Welcome(){
     return(

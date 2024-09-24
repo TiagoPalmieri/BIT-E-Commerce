@@ -1,20 +1,26 @@
 import Card from "../components/cards";
 import Carrousel from "../components/carrousel";
 import Head from "../components/header";
-import Welcome from "../components/welcome";
+import Snackbar from "../components/snackbar.js";
 import { Fragment } from "react";
 import "../styles/cards.css";
 import "../styles/carrousel.css";
 import "../styles/main.css";
 import "../styles/header.css";
-import "../styles/welcome.css";
-
+import "../styles/snackbar.css";
 import '../scripts/carrousel.js';
 
 export default function Main(){
+
+
+  setInterval(()=>{
+    return(
+      <Snackbar></Snackbar>
+    );
+  },5000);
+
   return (
     <Fragment>
-      <Welcome/>
       <Head />
       <section className="slider-container">
         <Carrousel />

@@ -7,6 +7,9 @@ import macbook from  '../assets/macbook.png'
 
 export default function Login(){
 
+  const SnackBar = () => {
+  }
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -17,6 +20,7 @@ export default function Login(){
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Previene el comportamiento por defecto del formulario
@@ -34,7 +38,12 @@ export default function Login(){
           'Authorization': ''
         }
       });
+
       console.log('Éxito');
+      setShowSnackbar(true);
+      setTimeout(() => {
+        setShowSnackbar(false);
+      }, 3000);
       console.log(response.data);
       window.location.href = '/main';
     } catch (error) {
@@ -60,6 +69,9 @@ export default function Login(){
             <img src={macbook} alt="MacBook" />
           </div>
         </div>
+        {showSnackbar && (
+          <div className='snackbar'></div>
+        )}
     </Fragment>
   );
 }
