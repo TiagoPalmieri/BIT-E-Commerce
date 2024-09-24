@@ -1,11 +1,11 @@
 import '../styles/snackbar.css'
 
-function Welcome(){
+function SnackBars(){
     return(
-        <div className='ad'>
+        <div className='snackbar'>
             <p>¡Welcome,</p>
         </div>
     );
 }
 
-export default Welcome;
+export default SnackBars;

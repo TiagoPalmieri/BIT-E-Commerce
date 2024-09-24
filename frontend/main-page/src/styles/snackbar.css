@@ -11,13 +11,13 @@
     --fuente: "Lexend Exa", sans-serif;
 }
 
-.ad {
+.snackbar {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     background-color: var(--text);
-    padding: 5px;
+    padding: 10px;
     border-radius: 15px;
     width: 50%;
     z-index: 6;
@@ -26,7 +26,7 @@
     transform: translate(-50%, -50%);
 }
 
-.ad p {
+.snackbar p {
     text-align: center;
     color: var(--background)
 }

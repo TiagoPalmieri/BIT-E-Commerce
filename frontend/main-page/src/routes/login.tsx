@@ -4,11 +4,9 @@ import { Fragment } from 'react';
 import '../styles/login.css';
 import axios from 'axios';
 import macbook from  '../assets/macbook.png'
+import SnackBars from '../components/snackbar';
 
 export default function Login(){
-
-  const SnackBar = () => {
-  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -43,9 +41,9 @@ export default function Login(){
       setShowSnackbar(true);
       setTimeout(() => {
         setShowSnackbar(false);
+        window.location.href = '/main';
       }, 3000);
       console.log(response.data);
-      window.location.href = '/main';
     } catch (error) {
       console.error('Error en la solicitud:', error);
       setError('No se pudo completar la solicitud. Verifica tus credenciales e inténtalo de nuevo.');
@@ -70,7 +68,7 @@ export default function Login(){
           </div>
         </div>
         {showSnackbar && (
-          <div className='snackbar'></div>
+          <SnackBars></SnackBars>
         )}
     </Fragment>
   );
