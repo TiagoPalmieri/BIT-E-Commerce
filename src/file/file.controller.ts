@@ -30,6 +30,9 @@ export class FileController {
         }
         cb(null, true);
       },
+      limits: {
+        fileSize: 5 * 1024 * 1024,
+      }
     }),
   )
   
