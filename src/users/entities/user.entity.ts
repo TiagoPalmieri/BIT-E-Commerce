@@ -3,7 +3,8 @@ import { Review } from "src/reviews/entities/review.entity";
 import { Seller } from "src/seller/entities/seller.entity";
 import { Sell } from "src/sells/entities/sell.entity";
 import { TransactionHistory } from "src/transaction-history/entities/transaction-history.entity";
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
+import { BeforeInsert, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
+import * as bcrypt from 'bcryptjs';
 
 export enum UserRole {
     Admin = 'Admin',
@@ -19,7 +20,7 @@ export class User {
     @Column({ unique: true })
     email: string;
 
-    @Column()
+    @Column({select: false})
     password: string;
 
     @Column()
@@ -53,5 +54,14 @@ export class User {
 
   @OneToMany(() => Sell, (sell) => sell.buyer)
   sell: Sell[]; 
+
+  async comparePassword(plainPassword: string){
+    return await bcrypt.compare(plainPassword, this.password);
+  }
+
+  @BeforeInsert()
+  async hashPassword(){
+    this.password = await bcrypt.hash(this.password, 10); 
+  }
 }
 

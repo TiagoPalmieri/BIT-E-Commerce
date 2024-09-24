@@ -30,7 +30,11 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string){
-    return await this.userRepository.findOneBy({email});
+    return await this.userRepository
+    .createQueryBuilder('user')
+    .where('user.email = :email', { email })
+    .addSelect('user.password') // Selecciona explícitamente el campo "password"
+    .getOne();
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
@@ -48,7 +52,7 @@ export class UsersService {
         return null; 
     }
     
-    const passwordMatch = bcrypt.compareSync(loginUserDto.password, user.password);
+    const passwordMatch = user.comparePassword(loginUserDto.password);
     
     if (!passwordMatch) {
         console.log('Invalid password for user:', loginUserDto.email);
