@@ -1,3 +1,4 @@
+import "../styles/cards.css";
 interface Props{
     product_name: string
     product_price: number

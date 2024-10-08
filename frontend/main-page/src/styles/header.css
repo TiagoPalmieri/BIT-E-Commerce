@@ -1,6 +1,8 @@
-:root{
-    text-decoration: none;
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+:root {
     --primary: #c2f84f;
+    --primaryshadow: #c2f84f80;
     --secondary: #a7d9a1;
     --accent: #97a68c;
     --text: #272725;
@@ -63,10 +65,4 @@ header nav ul li a:visited {
 header nav ul li a:hover{
     color: var(--background);
     text-decoration: none;
-}
-
-@media (max-width: 1025px){
-    header{
-        left: 30%;
-    }
 }

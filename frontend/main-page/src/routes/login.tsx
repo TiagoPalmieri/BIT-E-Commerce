@@ -49,27 +49,27 @@ export default function Login(){
       setError('No se pudo completar la solicitud. Verifica tus credenciales e inténtalo de nuevo.');
     }
   };
-  
+
   return(
     <Fragment>
-        <div className='background'>
-          <div className='leftPart'>
-            <p id='Login'>Login</p>
+      <div className='background'>
+        <div className='leftPart'>
+          <p id='Login'>Login</p>
           {error && <p className="error">{error}</p>}
-            <form action="#" id='myForm' onSubmit={handleSubmit}>
-              <input type="email" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-              <input type="password" value={password} placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
+          <form action="#" id='myForm' onSubmit={handleSubmit}>
+            <input type="email" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input type="password" value={password} placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
             <button className="btn" type="submit">Login</button>
-            </form>
-            <p>Do You already have an account?<a href="#">Sign up</a></p>
-          </div>
-          <div className='rightPart'>
-            <img src={macbook} alt="MacBook" />
-          </div>
+          </form>
+          <p>Do You already have an account?<a href="#">Sign up</a></p>
         </div>
-        {showSnackbar && (
-          <SnackBars></SnackBars>
-        )}
+        <div className='rightPart'>
+          <img src={macbook} alt="MacBook" />
+        </div>
+      </div>
+      {showSnackbar && (
+        <SnackBars></SnackBars>
+      )}
     </Fragment>
   );
 }

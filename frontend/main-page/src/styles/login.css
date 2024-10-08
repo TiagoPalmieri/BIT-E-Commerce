@@ -14,25 +14,26 @@
     --fuente: "Lexend Exa", sans-serif;
 }
 
-* {
-    font-family: var(--fuente);
-    margin: 0;
+html, body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    contain: content;
 }
-
 
 .background{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--accent);
-    width: 1400px;
-    height: 768px;
+    width: 1600px;
+    height: 48.3rem;
 }
 
 .leftPart{
     width: 463px;
-    display:flex;
-    justify-content:space-evenly;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     background-color: var(--text);
@@ -110,4 +111,9 @@
     text-align: center;
     width: auto;
     color: var(--primary);
+}
+
+@media screen {
+    .background{
+    }
 }

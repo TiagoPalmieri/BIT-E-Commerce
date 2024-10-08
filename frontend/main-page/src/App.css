@@ -14,14 +14,16 @@
 }
 
 *{
-    font-family: var(--fuente);
-    transition: all ease-in-out 250ms;
+  font-family: var(--fuente);
+  transition: all ease-in-out 250ms;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  display: block;
-  background-color: #fafafafa;
+  background-color: var(--text);
   justify-content: center;
   align-items: center;
   contain: content;
